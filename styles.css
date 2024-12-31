@@ -1,0 +1,200 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px;
+    position: fixed; /* Ensure the menu stays at the top */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: opacity 0.3s;
+}
+
+.menu.scrolled {
+    opacity: 0.5;
+}
+
+.menu .logo {
+    height: 50px;
+}
+
+.menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    margin: 0 10px;
+    position: relative;
+}
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color:#333;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+li:hover .dropdown {
+    display: block;
+}
+
+.dropdown a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {
+    background-color: #ddd;
+}
+
+/* Adjust dropdown position for the last menu item */
+.menu ul li:last-child .dropdown {
+    right: 0;
+    left: auto;
+}
+
+/* Hero section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('fence.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-logo {
+    height: 150px;
+    transition: transform 0.3s;
+}
+
+/* Services section */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.service-tile {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 20px;
+    transition: box-shadow 0.3s;
+}
+
+.service-tile:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.service-tile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Testimonials section */
+.testimonials {
+    padding: 20px;
+    background: url('testimonial_bg.jpg') no-repeat center center/cover;
+    color: #0e2723;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-item {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    padding: 20px;
+    font-size: 1.2em;
+}
+
+.carousel-item.active {
+    visibility: visible;
+    position: relative;
+}
+
+/* Responsive menu */
+@media (max-width: 768px) {
+    .menu ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu ul li .dropdown {
+        position: static;
+        box-shadow: none;
+    }
+
+    .menu ul li .dropdown a {
+        padding: 10px;
+    }
+
+    .menu .toggle-menu {
+        display: block;
+        cursor: pointer;
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        margin-right: 10px; /* Add margin-right to ensure it doesn't run off the screen */
+    }
+
+    .menu .toggle-menu:hover {
+        background-color: #444;
+    }
+
+    .menu.active ul {
+        display: flex;
+    }
+
+    .menu ul li .dropdown {
+        display: none;
+    }
+
+    .menu ul li.active .dropdown {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .menu .toggle-menu {
+        display: none;
+    }
+}
